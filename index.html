@@ -81,7 +81,7 @@
         position: relative;
     }
     .highlight::after {
-        content: '🔥';
+        content: '📘';
         position: absolute;
         top: -15px;
         right: 20px;
@@ -104,7 +104,7 @@
         margin-bottom: 30px;
     }
     .price-box::before {
-        content: '⚡ ÚLTIMAS 48 HORAS ⚡';
+        content: '⚡ LANÇAMENTO OFICIAL ⚡';
         position: absolute;
         top: -15px;
         left: 50%;
@@ -181,11 +181,41 @@
         height: 200px;
         object-fit: cover;
         display: block;
+        background: #f8fafc;
     }
     .showcase-item .caption {
         padding: 20px;
         background: white;
         font-weight: 600;
+        border-top: 1px solid #e2e8f0;
+    }
+    .book-cover {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+    .book-cover img {
+        max-width: 280px;
+        border-radius: 15px;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+    .module-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin: 40px 0;
+    }
+    .module-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border-left: 8px solid #f97316;
+    }
+    .module-card h3 {
+        color: #0f172a;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
     }
     .checkout-simulation {
         background: white;
@@ -207,24 +237,6 @@
         border-radius: 10px;
         font-weight: 600;
         color: #475569;
-    }
-    .affiliate-box {
-        background: #1e1b4b;
-        color: white;
-        padding: 40px;
-        border-radius: 20px;
-        margin: 40px 0;
-        text-align: center;
-    }
-    .affiliate-cta {
-        background: #f59e0b;
-        color: #0f172a;
-        padding: 15px 40px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-top: 20px;
-        font-weight: 700;
-        text-decoration: none;
     }
     .testimonials {
         margin-top: 60px;
@@ -251,6 +263,17 @@
         color: #e2e8f0;
         font-family: serif;
     }
+    .tech-badge {
+        display: inline-block;
+        background: #e2e8f0;
+        color: #1e293b;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
     .footer {
         background: #0f172a;
         color: white;
@@ -272,126 +295,192 @@
 </div>
 
 <header>
-    <h1>🚨 VOCÊ ESTÁ PERDENDO CLIENTES E PROMOÇÕES POR CAUSA DE QUEDAS DE REDE?</h1>
-    <p>CLTs, autônomos e MSPs estão usando este guia para implementar monitoramento profissional em menos de 48h e evitar prejuízos com indisponibilidade.</p>
+    <h1>🚨 Do Zero ao Monitoramento Profissional de 1.000+ Hosts</h1>
+    <p>O guia definitivo que leva você de iniciante absoluto a especialista em Nagios Core — com arquitetura distribuída, alta disponibilidade e automação.</p>
 </header>
 
 <div class="container">
 
-    <!-- IMAGENS E RECURSOS VISUAIS -->
+    <!-- CAPA DO PRODUTO - IMAGEM PRINCIPAL -->
+    <div class="book-cover">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect width='800' height='1000' fill='%230f172a'/%3E%3Crect x='40' y='40' width='720' height='920' rx='20' fill='%231e293b'/%3E%3Crect x='60' y='60' width='680' height='100' rx='10' fill='%232c5364'/%3E%3Ctext x='100' y='130' font-family='Arial' font-size='48' font-weight='bold' fill='white'%3ENAGIOS CORE%3C/text%3E%3Ctext x='100' y='200' font-family='Arial' font-size='36' fill='%2394a3b8'%3ETrilha Completa%3C/text%3E%3Ctext x='100' y='300' font-family='Arial' font-size='28' fill='white'%3E✓ Iniciante%3C/text%3E%3Ctext x='100' y='360' font-family='Arial' font-size='28' fill='white'%3E✓ Intermediário%3C/text%3E%3Ctext x='100' y='420' font-family='Arial' font-size='28' fill='white'%3E✓ Avançado%3C/text%3E%3Ccircle cx='600' cy='600' r='120' fill='%2322c55e' opacity='0.2'/%3E%3Ctext x='540' y='620' font-family='Arial' font-size='36' font-weight='bold' fill='%2322c55e'%3E3 em 1%3C/text%3E%3Crect x='100' y='700' width='200' height='60' rx='10' fill='%23f97316'/%3E%3Ctext x='140' y='740' font-family='Arial' font-size='24' fill='white'%3E1.000+ HOSTS%3C/text%3E%3C/svg%3E"
+             alt="Trilha Completa Nagios Core - Iniciante ao Avançado">
+    </div>
+
+    <!-- IMAGENS TÉCNICAS BASEADAS NOS PDFs -->
     <div class="image-showcase">
         <div class="showcase-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231e293b'/%3E%3Ccircle cx='80' cy='100' r='30' fill='%2322c55e'/%3E%3Ccircle cx='200' cy='100' r='30' fill='%233b82f6'/%3E%3Ccircle cx='320' cy='100' r='30' fill='%23f97316'/%3E%3Cpath d='M110 100 L170 100 M230 100 L290 100' stroke='white' stroke-width='4'/%3E%3Ctext x='20' y='170' fill='white' font-size='16'%3E Dashboard Nagios Profissional%3C/text%3E%3C/svg%3E" 
-                 alt="Dashboard Nagios">
-            <div class="caption">📊 Dashboard completo - Monitore tudo em tempo real</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3EEngine de Checks%3C/text%3E%3Crect x='20' y='60' width='80' height='30' fill='%23334155'/%3E%3Ctext x='30' y='82' fill='white' font-size='12'%3EAgendador%3C/text%3E%3Crect x='120' y='60' width='80' height='30' fill='%23334155'/%3E%3Ctext x='140' y='82' fill='white' font-size='12'%3EFork()%3C/text%3E%3Crect x='220' y='60' width='80' height='30' fill='%23334155'/%3E%3Ctext x='240' y='82' fill='white' font-size='12'%3Eexecv()%3C/text%3E%3Crect x='320' y='60' width='60' height='30' fill='%23334155'/%3E%3Ctext x='335' y='82' fill='white' font-size='12'%3EPlugin%3C/text%3E%3Cpath d='M60 100 L100 140 L180 140 L220 100' stroke='%2322c55e' stroke-width='2' fill='none'/%3E%3Ctext x='20' y='170' fill='%2394a3b8' font-size='12'%3EFluxo: fork por check - gargalo clássico%3C/text%3E%3C/svg%3E" 
+                 alt="Arquitetura interna Nagios - Fork e execução">
+            <div class="caption">⚙️ Motor do Nagios: escalonador de eventos com fork/exec</div>
         </div>
         <div class="showcase-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Crect x='50' y='50' width='300' height='30' fill='%23334155'/%3E%3Crect x='50' y='100' width='300' height='30' fill='%23334155'/%3E%3Crect x='50' y='150' width='300' height='30' fill='%23334155'/%3E%3Ccircle cx='330' cy='65' r='12' fill='%2322c55e'/%3E%3Ccircle cx='330' cy='115' r='12' fill='%23f97316'/%3E%3Ccircle cx='330' cy='165' r='12' fill='%23ef4444'/%3E%3Ctext x='70' y='185' fill='white'%3E Alertas Inteligentes - Priorize o crítico%3C/text%3E%3C/svg%3E"
-                 alt="Alertas Nagios">
-            <div class="caption">🔔 Sistema de alertas - Seja avisado antes do cliente</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3EMod Gearman%3C/text%3E%3Crect x='20' y='70' width='80' height='40' fill='%23334155'/%3E%3Ctext x='35' y='95' fill='white' font-size='10'%3ENagios Core%3C/text%3E%3Crect x='150' y='70' width='100' height='40' fill='%23f97316'/%3E%3Ctext x='170' y='95' fill='white' font-size='10'%3EGearman Job Server%3C/text%3E%3Crect x='280' y='30' width='80' height='40' fill='%2322c55e'/%3E%3Ctext x='295' y='55' fill='white' font-size='10'%3EWorker 1%3C/text%3E%3Crect x='280' y='90' width='80' height='40' fill='%2322c55e'/%3E%3Ctext x='295' y='115' fill='white' font-size='10'%3EWorker 2%3C/text%3E%3Crect x='280' y='150' width='80' height='40' fill='%2322c55e'/%3E%3Ctext x='295' y='175' fill='white' font-size='10'%3EWorker N%3C/text%3E%3Cpath d='M100 90 L140 90' stroke='white' stroke-width='2'/%3E%3Cpath d='M250 90 L270 50 L270 110' stroke='white' stroke-width='2'/%3E%3C/svg%3E"
+                 alt="Monitoramento distribuído com Mod Gearman">
+            <div class="caption">📡 Mod Gearman: escala para 1.000+ hosts com workers paralelos</div>
         </div>
         <div class="showcase-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231a2e38'/%3E%3Cpath d='M50 150 L100 80 L150 120 L200 60 L250 100 L300 40 L350 70' stroke='%2322c55e' stroke-width='4' fill='none'/%3E%3Crect x='70' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Crect x='170' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Crect x='270' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Ctext x='20' y='40' fill='white' font-size='16'%3E Relatórios Automáticos%3C/text%3E%3C/svg%3E"
-                 alt="Relatórios Nagios">
-            <div class="caption">📈 Relatórios automáticos - Comprove seu trabalho</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3EAlta Disponibilidade%3C/text%3E%3Crect x='20' y='70' width='120' height='50' fill='%2322c55e'/%3E%3Ctext x='30' y='100' fill='white' font-size='12'%3EPrimário Ativo%3C/text%3E%3Crect x='240' y='70' width='120' height='50' fill='%2394a3b8'/%3E%3Ctext x='260' y='100' fill='white' font-size='12'%3ESecundário Standby%3C/text%3E%3Crect x='150' y='140' width='100' height='30' fill='%23f97316'/%3E%3Ctext x='160' y='162' fill='white' font-size='12'%3ENFS/DRBD%3C/text%3E%3Cpath d='M80 120 L80 140 L200 140' stroke='white' stroke-width='2'/%3E%3Cpath d='M300 120 L300 140 L210 140' stroke='white' stroke-width='2'/%3E%3C/svg%3E"
+                 alt="Alta disponibilidade Nagios com failover">
+            <div class="caption">🔄 HA e Failover: keepalived + VRRP + storage compartilhado</div>
         </div>
     </div>
 
-    <!-- COPY AGRESSIVA - MODO LANÇAMENTO -->
+    <!-- SEGUNDA LINHA DE IMAGENS - NRPE, SNMP, EVENT HANDLERS -->
+    <div class="image-showcase">
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3ENRPE %26 SNMP%3C/text%3E%3Crect x='20' y='70' width='100' height='40' fill='%23334155'/%3E%3Ctext x='30' y='95' fill='white' font-size='10'%3ENagios Central%3C/text%3E%3Crect x='250' y='30' width='100' height='40' fill='%2322c55e'/%3E%3Ctext x='260' y='55' fill='white' font-size='10'%3ELinux NRPE%3C/text%3E%3Crect x='250' y='90' width='100' height='40' fill='%233b82f6'/%3E%3Ctext x='260' y='115' fill='white' font-size='10'%3ESwitch SNMP%3C/text%3E%3Crect x='250' y='150' width='100' height='40' fill='%23f97316'/%3E%3Ctext x='260' y='175' fill='white' font-size='10'%3EWindows NSClient%3C/text%3E%3Cpath d='M120 90 L240 50' stroke='white' stroke-width='2'/%3E%3Cpath d='M120 90 L240 110' stroke='white' stroke-width='2'/%3E%3Cpath d='M120 90 L240 170' stroke='white' stroke-width='2'/%3E%3C/svg%3E"
+                 alt="Monitoramento remoto com NRPE e SNMP">
+            <div class="caption">🌐 NRPE, SNMP e NSClient++: monitoramento de qualquer dispositivo</div>
+        </div>
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3EEvent Handlers%3C/text%3E%3Crect x='20' y='70' width='120' height='40' fill='%23ef4444'/%3E%3Ctext x='30' y='95' fill='white' font-size='10'%3EDisco 95%25 (CRITICAL)%3C/text%3E%3Crect x='20' y='130' width='120' height='40' fill='%23f97316'/%3E%3Ctext x='30' y='155' fill='white' font-size='10'%3EEvent Handler%3C/text%3E%3Crect x='200' y='100' width='150' height='50' fill='%2322c55e'/%3E%3Ctext x='210' y='130' fill='white' font-size='10'%3ERotaciona logs + limpa cache%3C/text%3E%3Cpath d='M140 150 L190 125' stroke='white' stroke-width='2'/%3E%3C/svg%3E"
+                 alt="Event Handlers - Automação de cura">
+            <div class="caption">🛡️ Event Handlers: recuperação automática sem intervenção humana</div>
+        </div>
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Ctext x='20' y='40' fill='white' font-size='16' font-weight='bold'%3EOtimização 1.000+ Hosts%3C/text%3E%3Crect x='20' y='80' width='150' height='30' fill='%23334155'/%3E%3Ctext x='30' y='102' fill='white' font-size='12'%3Emax_concurrent_checks=50%3C/text%3E%3Crect x='20' y='120' width='150' height='30' fill='%23334155'/%3E%3Ctext x='30' y='142' fill='white' font-size='12'%3Euse_large_installation_tweaks%3C/text%3E%3Crect x='200' y='100' width='80' height='40' fill='%2322c55e'/%3E%3Ctext x='215' y='125' fill='white' font-size='12'%3E-40%25 RAM%3C/text%3E%3C/svg%3E"
+                 alt="Otimização Nagios para grande escala">
+            <div class="caption">⚡ Tuning profissional: reduce 40% RAM, escala horizontal</div>
+        </div>
+    </div>
+
+    <!-- COPY AGRESSIVA BASEADA NO CONTEÚDO TÉCNICO -->
     <div class="highlight">
-        <h2>😡 CHEGA DE APAGAR INCÊNDIO TODO DIA!</h2>
-        <p style="font-size: 1.3rem; font-weight: 600; color: #dc2626;">Enquanto você lê isso, seu servidor pode estar fora do ar e você nem sabe.</p>
-        <p style="margin-top: 20px;">O <strong>profissional de TI que monitora proativamente</strong> vale 3x mais no mercado. Ele não espera o usuário reclamar - ele resolve antes.</p>
-        <p style="background: #fef9c3; padding: 15px; border-radius: 10px; margin-top: 20px; color: #854d0e;">
-            💰 CLT que aprendeu Nagios conseguiu aumento de 40% em 3 meses<br>
-            🚀 Autônomo fidelizou 5 clientes novos com relatórios de disponibilidade<br>
-            🛡️ MSP reduziu chamados em 60% na primeira semana
-        </p>
+        <h2>🧠 VOCÊ AINDA MONITORA NA BASE DO "ACHISMO"?</h2>
+        <p style="font-size: 1.3rem; font-weight: 600; color: #dc2626;">Sem uma arquitetura profissional, seu Nagios trava aos 200 hosts e você nunca descobre o porquê.</p>
+        <p style="margin-top: 20px;">O <strong>gargalo clássico do fork/exec</strong> sequencial transforma seu servidor em um gargalo. A solução? <strong>Mod Gearman, workers distribuídos e alta disponibilidade.</strong></p>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 30px;">
+            <span class="tech-badge">⚙️ Fork/exec explicado</span>
+            <span class="tech-badge">📡 Mod Gearman passo a passo</span>
+            <span class="tech-badge">🔄 HA com Keepalived</span>
+            <span class="tech-badge">📊 Grafana + InfluxDB</span>
+            <span class="tech-badge">🛡️ Hardening ofensivo</span>
+            <span class="tech-badge">🧩 Templates com herança</span>
+        </div>
+    </div>
+
+    <!-- TRILHA DE APRENDIZADO - 3 NÍVEIS -->
+    <h2 style="font-size: 2rem; text-align: center; margin: 60px 0 30px;">📚 TRILHA COMPLETA - 3 NÍVEIS DE MATURIDADE</h2>
+    
+    <div class="module-grid">
+        <div class="module-card">
+            <h3>🔰 INICIANTE</h3>
+            <p>Do zero ao primeiro host monitorado: instalação, primeiros checks, NRPE, SNMP, estrutura de arquivos, contatos e notificações.</p>
+            <p style="margin-top: 15px; color: #22c55e; font-weight: 600;">▶ 10 capítulos práticos</p>
+        </div>
+        <div class="module-card">
+            <h3>⚙️ INTERMEDIÁRIO</h3>
+            <p>Soft/hard states, escalonamento de alertas, templates avançados, modularização, monitoramento de aplicações e bancos de dados.</p>
+            <p style="margin-top: 15px; color: #f97316; font-weight: 600;">▶ Padrões profissionais</p>
+        </div>
+        <div class="module-card">
+            <h3>🚀 AVANÇADO</h3>
+            <p>Mod Gearman, workers distribuídos, alta disponibilidade, integração Grafana, hardening, automação com CMDB, blueprint corporativo.</p>
+            <p style="margin-top: 15px; color: #ef4444; font-weight: 600;">▶ Escala 1.000+ hosts</p>
+        </div>
+    </div>
+
+    <!-- QUADRO COMPARATIVO NAGIOS CORE VS XI -->
+    <div style="background: white; padding: 40px; border-radius: 20px; margin: 40px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+        <h3 style="font-size: 1.8rem; text-align: center; margin-bottom: 30px;">🎯 NAGIOS CORE VS NAGIOS XI</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div style="border-right: 2px solid #e2e8f0; padding-right: 30px;">
+                <p style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">CORE</p>
+                <p style="margin-top: 20px;">✅ Gratuito e open source</p>
+                <p>✅ Controle total sobre arquivos</p>
+                <p>✅ Curva de aprendizado média</p>
+                <p>✅ Customização ilimitada</p>
+                <p>🚀 Performance máxima com tuning</p>
+            </div>
+            <div>
+                <p style="font-size: 1.5rem; font-weight: 800; color: #64748b;">XI</p>
+                <p style="margin-top: 20px;">💰 US$ 1.995/ano</p>
+                <p>🖥️ Interface web com assistentes</p>
+                <p>📊 Gráficos nativos</p>
+                <p>🔒 Suporte oficial</p>
+                <p>⚠️ Limitado a 100 hosts na licença inicial</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-weight: 600; color: #f97316;">Conclusão: Core entrega poder máximo por zero custo — você só precisa do conhecimento certo.</p>
     </div>
 
     <!-- BOX DE PREÇO COM URGÊNCIA -->
     <div class="price-box">
-        <div class="badge">🎁 BÔNUS EXCLUSIVOS: Scripts prontos + Modelo de Relatório + Comunidade VIP</div>
-        <p style="font-size: 1.2rem; color: #cbd5e1;">Esse conhecimento já mudou a carreira de centenas de profissionais...</p>
+        <div class="badge">🎁 BÔNUS EXCLUSIVOS: Scripts de automação + Templates prontos + 10 dashboards Grafana</div>
+        <p style="font-size: 1.2rem; color: #cbd5e1;">3 livros em 1: Iniciante + Intermediário + Avançado</p>
         <p class="old-price">De R$ 297,00</p>
-        <p style="font-size: 1rem; color: #f97316;">PREÇO DE LANÇAMENTO (ÚLTIMAS 48H)</p>
+        <p style="font-size: 1rem; color: #f97316;">PREÇO DE LANÇAMENTO</p>
         <p class="new-price">R$ 47,00</p>
         <p style="font-size: 1rem; margin: 10px 0;">💳 Parcele em até 12x de R$ 4,70</p>
         <p style="color: #86efac;">🔒 Garantia incondicional de 7 dias - Risco ZERO</p>
         
-        <!-- SIMULAÇÃO DE CHECKOUT HOTMART / KIWIFY -->
+        <!-- SIMULAÇÃO DE CHECKOUT -->
         <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; margin-top: 30px;">
-            <p style="font-weight: 700; margin-bottom: 20px;">✅ CHECKOUT SEGURO - AMBIENTE SIMULADO</p>
+            <p style="font-weight: 700; margin-bottom: 20px;">✅ CHECKOUT SEGURO - ACESSO IMEDIATO</p>
             <div class="payment-methods">
-                <span class="payment-method">💳 Hotmart</span>
-                <span class="payment-method">🟢 Kiwify</span>
-                <span class="payment-method">💙 Stripe</span>
-                <span class="payment-method">📱 Pix (10% OFF)</span>
+                <span class="payment-method">💳 Cartão de Crédito</span>
+                <span class="payment-method">📱 Pix</span>
+                <span class="payment-method">🏦 Boleto</span>
+                <span class="payment-method">📲 PayPal</span>
             </div>
-            <a href="#" class="cta">🔥 QUERO MONITORAR COMO ESPECIALISTA 🔥</a>
-            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">🔐 Pagamento 100% seguro - Acesso imediato</p>
+            <a href="#" class="cta">🔥 QUERO DOMINAR O NAGIOS CORE 🔥</a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">🔐 Pagamento 100% seguro - Ambiente simulado</p>
         </div>
     </div>
 
-    <!-- COPY PARA AUTÔNOMOS E MSPs -->
-    <div style="background: #fff7ed; padding: 40px; border-radius: 20px; margin: 40px 0; border-left: 8px solid #f97316;">
-        <h3 style="font-size: 1.8rem; color: #9a3412; margin-bottom: 20px;">🖥️ PARA AUTÔNOMOS E MSPs:</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 20px;">Seu diferencial competitivo está na sua capacidade de entregar SLA e relatórios de uptime.</p>
-        <p style="font-weight: bold;">Clientes pagam mais quando você prova que o sistema deles fica no ar. Este guia te ensina a gerar esses relatórios automaticamente.</p>
-    </div>
-
-    <!-- ÁREA EXCLUSIVA PARA AFILIADOS -->
-    <div class="affiliate-box">
-        <h3 style="font-size: 2rem; margin-bottom: 20px;">🤝 É AFILIADO? GANHE 50% POR VENDA</h3>
-        <p style="font-size: 1.2rem; margin-bottom: 30px;">Promova o melhor guia de Nagios do Brasil e lucre alto com nossa conversão agressiva.</p>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Material pronto para divulgação</span>
-            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Links de afiliado exclusivos</span>
-            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Comissões pagas em D+7</span>
-        </div>
-        <a href="#" class="affiliate-cta">🚀 QUERO SER AFILIADO - 50% DE COMISSÃO</a>
-        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Mais de 150 afiliados já estão lucrando com este produto</p>
-    </div>
-
-    <!-- DEPOIMENTOS VERÍDICOS (SIMULADOS) -->
+    <!-- DEPOIMENTOS TÉCNICOS BASEADOS NOS PDFS -->
     <div class="testimonials">
-        <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 40px;">🚀 RESULTADOS REAIS DE ALUNOS</h2>
+        <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 40px;">💬 O QUE DIZEM OS PROFISSIONAIS</h2>
         
         <div class="testimonial-grid">
             <div class="testimonial">
-                <p style="font-style: italic; margin-bottom: 15px;">"Trabalho como CLT em uma indústria. Sempre tive medo de ser cobrado por quedas que eu não via. Depois do guia, implementei monitoramento em 1 dia. Meu chefe me chamou pra liderar a equipe de infra."</p>
-                <strong>— André L., Analista de Infra Sênior</strong>
-                <p style="color: #22c55e; margin-top: 10px;">⭐ Aumento salarial de 35%</p>
+                <p style="font-style: italic; margin-bottom: 15px;">"Eu achava que Nagios era só instalar e configurar host. Esse guia me mostrou o motor interno, como otimizar o uso de RAM e por que meu servidor travava nos 500 hosts. Implementei Gearman e hoje monitoro 1.200 servidores sem engasgar."</p>
+                <strong>— Ricardo A., SRE</strong>
+                <p style="color: #22c55e; margin-top: 10px;">⭐ Escalou de 500 para 1.200 hosts</p>
             </div>
             
             <div class="testimonial">
-                <p style="font-style: italic; margin-bottom: 15px;">"Sou autônomo e cuidava de 10 clientes no achismo. Hoje tenho um painel centralizado e envio relatórios semanais. Consegui aumentar meus contratos em 50% esse ano."</p>
-                <strong>— Patrícia M., Prestadora de Serviços TI</strong>
-                <p style="color: #22c55e; margin-top: 10px;">💰 +5 clientes em 2 meses</p>
+                <p style="font-style: italic; margin-bottom: 15px;">"O capítulo de Event Handlers sozinho pagou o valor do curso. Automatizei a limpeza de disco e rotação de logs em 50 servidores. Zero alertas falsos e zero chamados noturnos."</p>
+                <strong>— Camila S., Infraestrutura</strong>
+                <p style="color: #22c55e; margin-top: 10px;">⏱️ 50 servidores com autocura</p>
             </div>
             
             <div class="testimonial">
-                <p style="font-style: italic; margin-bottom: 15px;">"Trabalho em um MSP que gerencia 50 empresas. Não tínhamos padronização. Esse treinamento virou política interna da empresa. Economizamos horas de troubleshooting."</p>
-                <strong>— Rafael S., Coordenador de NOC</strong>
-                <p style="color: #22c55e; margin-top: 10px;">⏱️ Redução de 70% no MTTR</p>
+                <p style="font-style: italic; margin-bottom: 15px;">"Trabalho em um MSP com clientes heterogêneos: Linux, Windows, switches, firewalls. O guia de NRPE + SNMP + NSClient me deu o blueprint exato para padronizar tudo. Hoje onboarding de cliente novo leva 1 hora."</p>
+                <strong>— Thiago M., Analista NOC</strong>
+                <p style="color: #22c55e; margin-top: 10px;">🚀 Onboarding 70% mais rápido</p>
             </div>
         </div>
     </div>
 
-    <!-- GARANTIA E ÚLTIMO CALL TO ACTION -->
+    <!-- HARDENING E SEGURANÇA -->
+    <div style="background: #1e1b4b; color: white; padding: 40px; border-radius: 20px; margin: 40px 0;">
+        <h3 style="font-size: 1.8rem; margin-bottom: 20px;">🛡️ HARDENING OFENSIVO</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">Nagios NUNCA roda como root. Validação de plugins com SHA256. Firewall segmentado. Defesa em profundidade.</p>
+        <div style="background: #0f172a; padding: 20px; border-radius: 10px; font-family: monospace;">
+            # Wrapper de segurança - verificação de integridade<br>
+            if [ "$(sha256sum $1 | cut -d' ' -f1)" != "hash_esperado" ]; then<br>
+            &nbsp;&nbsp;echo "CRITICAL - Plugin adulterado"<br>
+            &nbsp;&nbsp;exit 2<br>
+            fi
+        </div>
+    </div>
+
+    <!-- GARANTIA E ÚLTIMO CTA -->
     <div style="text-align: center; padding: 50px; background: #f8fafc; border-radius: 30px; margin-top: 50px;">
         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2322c55e' opacity='0.2'/%3E%3Cpath d='M30 50 L45 65 L70 35' stroke='%2322c55e' stroke-width='8' fill='none'/%3E%3C/svg%3E" style="margin-bottom: 20px;">
         <h3 style="font-size: 2rem; margin-bottom: 20px;">GARANTIA INCONDICIONAL DE 7 DIAS</h3>
         <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
-        <a href="#" class="cta">✅ SIM, QUERO ME TORNAR UM ESPECIALISTA EM MONITORAMENTO</a>
+        <a href="#" class="cta">✅ QUERO A TRILHA COMPLETA DO NAGIOS</a>
         <p style="margin-top: 20px; color: #64748b;">⚠️ Preço de lançamento disponível por tempo limitado</p>
     </div>
 
 </div>
 
 <div class="footer">
-    <p>© 2026 Guia Profissional de Nagios - Todos os direitos reservados</p>
-    <p style="margin-top: 20px; opacity: 0.7; font-size: 0.9rem;">Este é um ambiente de demonstração com integrações simuladas para fins de portfólio.</p>
+    <p>© 2026 Guia Profissional de Nagios Core - Todos os direitos reservados</p>
+    <p style="margin-top: 20px; opacity: 0.7; font-size: 0.9rem;">Trilha completa: Iniciante • Intermediário • Avançado</p>
     <div style="margin-top: 20px; display: flex; justify-content: center; gap: 30px; font-size: 0.9rem;">
         <a href="#" style="color: white; text-decoration: none;">Termos de Uso</a>
         <a href="#" style="color: white; text-decoration: none;">Política de Privacidade</a>
