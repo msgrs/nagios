@@ -1,158 +1,153 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método NAGIOS PRO | Monitoramento Profissional com Nagios Core</title>
-    <meta name="description" content="Aprenda a implantar, estruturar e escalar monitoramento profissional de redes com Nagios Core. Do zero ao avançado.">
-
-    <!-- ================= PIXEL AREA (INSERIR AQUI) ================= -->
-    <!-- Cole aqui seu Pixel do Facebook, Google Analytics, Google Tag Manager ou outro script de rastreamento -->
-    <!-- Exemplo:
-    <script>
-        // Seu código de pixel aqui
-    </script>
-    -->
-    <!-- ============================================================= -->
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #0f172a;
-            color: #f1f5f9;
-        }
-        header {
-            background: linear-gradient(135deg, #0ea5e9, #2563eb);
-            padding: 60px 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #38bdf8;
-        }
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #22c55e;
-            color: #000;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .card {
-            background-color: #1e293b;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        .highlight {
-            color: #22c55e;
-            font-weight: bold;
-        }
-        footer {
-            background-color: #020617;
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 14px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Completo de Monitoramento com Nagios</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f9;
+        color: #333;
+    }
+    header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    header h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+    header p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+    .highlight {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .price-box {
+        background: #1e293b;
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    .old-price {
+        text-decoration: line-through;
+        color: #ff6b6b;
+        font-size: 1.2rem;
+    }
+    .new-price {
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin: 15px 0;
+        color: #22c55e;
+    }
+    .badge {
+        display: inline-block;
+        background: #22c55e;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    .cta {
+        display: inline-block;
+        background: #f97316;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+    .cta:hover {
+        background: #ea580c;
+    }
+    .testimonials {
+        margin-top: 60px;
+    }
+    .testimonial {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 60px;
+    }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>🔥 Método NAGIOS PRO</h1>
-    <p><strong>Domine o Monitoramento Profissional de Redes com Nagios Core</strong></p>
-    <p>Do Zero ao Especialista | Implantação Real | Ambiente Corporativo</p>
-    
-    <!-- ================= LINK CHECKOUT ================= -->
-    <a href="LINK_DO_CHECKOUT_AQUI" class="btn">QUERO ACESSAR AGORA</a>
-    <!-- ================================================= -->
+    <h1>⚠️ Pare de Descobrir Problemas na Sua Rede Quando Já é Tarde Demais</h1>
+    <p>Aprenda a configurar o Nagios do zero ao avançado e transforme seu monitoramento em um sistema profissional que previne falhas antes que elas prejudiquem sua empresa.</p>
 </header>
 
-<section>
-    <h2>Você enfrenta algum desses problemas?</h2>
-    <div class="card">
-        ❌ Servidores caem e você só descobre depois que o usuário reclama?<br><br>
-        ❌ Falta visibilidade da infraestrutura?<br><br>
-        ❌ Monitoramento improvisado e desorganizado?<br><br>
-        ❌ Dependência de ferramentas caras?
+<div class="container">
+
+    <div class="highlight">
+        <h2>🔥 HOOK DE CONVERSÃO</h2>
+        <p><strong>Imagine receber o alerta do problema antes do seu cliente perceber.</strong><br>
+        É isso que profissionais de TI valorizados fazem — e você pode aprender agora.</p>
     </div>
 
-    <h2>A Solução</h2>
-    <div class="card">
-        O <span class="highlight">Método NAGIOS PRO</span> é uma trilogia completa de ebooks que ensina você a implantar monitoramento profissional utilizando o Nagios Core (versão gratuita), com aplicação real em ambientes corporativos.
-    </div>
-</section>
-
-<section>
-    <h2>📘 O Que Você Vai Aprender</h2>
-
-    <div class="card">
-        <h3>Volume 1 – Fundamentos</h3>
-        ✔ Instalação do Nagios Core
-        ✔ Estrutura de configuração
-        ✔ Primeiros hosts e serviços
-        ✔ Alertas e notificações
+    <div class="price-box">
+        <div class="badge">🛡 Garantia Incondicional de 7 Dias</div>
+        <p class="old-price">De R$ 197,00</p>
+        <p class="new-price">R$ 67,00</p>
+        <p>🎯 Promoção por tempo limitado</p>
+        <p>⚡ Acesso imediato após confirmação</p>
+        <a href="#" class="cta">QUERO ACESSO IMEDIATO</a>
     </div>
 
-    <div class="card">
-        <h3>Volume 2 – Infraestrutura Corporativa</h3>
-        ✔ Monitoramento via NRPE
-        ✔ SNMP para equipamentos de rede
-        ✔ Monitoramento de serviços críticos
-        ✔ Organização profissional de ambiente
+    <div class="testimonials">
+        <h2>💬 O Que Estão Dizendo</h2>
+
+        <div class="testimonial">
+            <strong>Marcos R. – Analista de Infraestrutura</strong>
+            <p>"Finalmente entendi como configurar alertas corretamente. Em 2 dias já estava monitorando servidores e links como profissional."</p>
+        </div>
+
+        <div class="testimonial">
+            <strong>Juliana P. – Suporte N2</strong>
+            <p>"Material direto ao ponto. Economizei semanas de tentativa e erro. Vale muito mais que o valor cobrado."</p>
+        </div>
+
+        <div class="testimonial">
+            <strong>Carlos M. – Técnico de TI</strong>
+            <p>"Depois desse guia consegui implementar monitoramento real na empresa e mostrar resultado para diretoria."</p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>Volume 3 – Arquitetura Avançada</h3>
-        ✔ Monitoramento distribuído
-        ✔ Alta disponibilidade
-        ✔ Otimização para grandes ambientes
-        ✔ Integrações e automações
-    </div>
-</section>
-
-<section>
-    <h2>🎯 Para Quem é o Método NAGIOS PRO?</h2>
-    <div class="card">
-        ✔ Técnicos de TI<br>
-        ✔ Analistas de Infraestrutura<br>
-        ✔ Administradores de Redes<br>
-        ✔ Profissionais que desejam subir de nível na carreira
-    </div>
-</section>
-
-<section style="text-align:center;">
-    <h2>🚀 Torne-se Referência em Monitoramento</h2>
-    <p>Aprenda a estruturar monitoramento profissional com baixo custo e alto nível técnico.</p>
-
-    <!-- ================= LINK CHECKOUT ================= -->
-    <a href="LINK_DO_CHECKOUT_AQUI" class="btn">GARANTIR MEU ACESSO</a>
-    <!-- ================================================= -->
-</section>
-
-<section>
-    <h2>🔒 Garantia</h2>
-    <div class="card">
-        Garantia incondicional de 7 dias. Se não ficar satisfeito, devolvemos 100% do seu investimento.
-    </div>
-</section>
+</div>
 
 <footer>
-    © 2026 Método NAGIOS PRO - Todos os direitos reservados.<br>
-    Este produto não é afiliado à Nagios Enterprises.
+    © 2026 Guia Profissional de Nagios | Todos os direitos reservados
 </footer>
 
 </body>
