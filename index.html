@@ -5,150 +5,399 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guia Completo de Monitoramento com Nagios</title>
 <style>
-    body {
+    * {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f4f6f9;
-        color: #333;
+        padding: 0;
+        box-sizing: border-box;
     }
+    body {
+        font-family: 'Inter', Arial, Helvetica, sans-serif;
+        background: #f4f6f9;
+        color: #1e293b;
+        line-height: 1.6;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    
     header {
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        background: linear-gradient(135deg, #0b1c22, #1a2e38, #0f1a1f);
         color: white;
-        padding: 60px 20px;
+        padding: 80px 20px;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 100,0 100,100" fill="rgba(255,255,255,0.02)"/></svg>');
+        opacity: 0.1;
     }
     header h1 {
-        font-size: 2.8rem;
+        font-size: 3.2rem;
         margin-bottom: 20px;
+        font-weight: 800;
+        position: relative;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     header p {
-        font-size: 1.2rem;
-        max-width: 700px;
+        font-size: 1.3rem;
+        max-width: 800px;
         margin: 0 auto;
+        opacity: 0.95;
+        position: relative;
+    }
+    .urgency-bar {
+        background: #dc2626;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { background-color: #dc2626; }
+        50% { background-color: #b91c1c; }
+        100% { background-color: #dc2626; }
     }
     .container {
-        max-width: 1000px;
+        max-width: 1100px;
         margin: auto;
         padding: 40px 20px;
     }
     .highlight {
         background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         margin-bottom: 40px;
         text-align: center;
+        border: 1px solid #e2e8f0;
+        position: relative;
+    }
+    .highlight::after {
+        content: '🔥';
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        font-size: 40px;
+    }
+    .highlight h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #0f172a;
     }
     .price-box {
-        background: #1e293b;
+        background: linear-gradient(145deg, #0f172a, #1e293b);
         color: white;
-        padding: 40px;
-        border-radius: 15px;
+        padding: 50px 40px;
+        border-radius: 30px;
         text-align: center;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        box-shadow: 0 25px 50px -8px rgba(0,0,0,0.25);
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.1);
+        margin-bottom: 30px;
+    }
+    .price-box::before {
+        content: '⚡ ÚLTIMAS 48 HORAS ⚡';
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #f97316;
+        color: white;
+        padding: 8px 25px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 2px;
     }
     .old-price {
         text-decoration: line-through;
-        color: #ff6b6b;
-        font-size: 1.2rem;
+        color: #94a3b8;
+        font-size: 1.4rem;
     }
     .new-price {
-        font-size: 2.8rem;
-        font-weight: bold;
+        font-size: 3.8rem;
+        font-weight: 800;
         margin: 15px 0;
         color: #22c55e;
+        line-height: 1;
+        text-shadow: 0 0 20px rgba(34,197,94,0.3);
     }
     .badge {
         display: inline-block;
         background: #22c55e;
         color: white;
-        padding: 10px 20px;
+        padding: 12px 28px;
         border-radius: 50px;
-        margin: 10px 0;
-        font-weight: bold;
+        margin: 15px 0;
+        font-weight: 700;
+        font-size: 1.1rem;
     }
     .cta {
         display: inline-block;
-        background: #f97316;
+        background: linear-gradient(45deg, #f97316, #ea580c);
         color: white;
-        padding: 15px 40px;
+        padding: 18px 50px;
         border-radius: 50px;
         text-decoration: none;
-        font-size: 1.2rem;
-        margin-top: 20px;
+        font-size: 1.4rem;
+        margin-top: 25px;
         transition: 0.3s;
+        font-weight: 700;
+        box-shadow: 0 15px 30px -8px rgba(249,115,22,0.4);
+        border: 2px solid rgba(255,255,255,0.3);
     }
     .cta:hover {
-        background: #ea580c;
+        transform: scale(1.05);
+        background: linear-gradient(45deg, #ea580c, #c2410c);
+        box-shadow: 0 20px 40px -8px rgba(249,115,22,0.6);
+    }
+    .image-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 50px 0;
+    }
+    .showcase-item {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .showcase-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .showcase-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+    .showcase-item .caption {
+        padding: 20px;
+        background: white;
+        font-weight: 600;
+    }
+    .checkout-simulation {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        margin: 40px 0;
+        border: 2px solid #e2e8f0;
+    }
+    .payment-methods {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+    .payment-method {
+        background: #f1f5f9;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        color: #475569;
+    }
+    .affiliate-box {
+        background: #1e1b4b;
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
+        text-align: center;
+    }
+    .affiliate-cta {
+        background: #f59e0b;
+        color: #0f172a;
+        padding: 15px 40px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 700;
+        text-decoration: none;
     }
     .testimonials {
         margin-top: 60px;
     }
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
     .testimonial {
         background: white;
-        padding: 25px;
-        border-radius: 10px;
-        margin-bottom: 20px;
+        padding: 30px;
+        border-radius: 15px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        position: relative;
     }
-    footer {
-        background: #111827;
+    .testimonial::before {
+        content: '"';
+        font-size: 80px;
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        color: #e2e8f0;
+        font-family: serif;
+    }
+    .footer {
+        background: #0f172a;
         color: white;
         text-align: center;
-        padding: 30px;
+        padding: 40px;
         margin-top: 60px;
+        border-top: 4px solid #f97316;
+    }
+    @media (max-width: 768px) {
+        header h1 { font-size: 2rem; }
+        .new-price { font-size: 2.8rem; }
     }
 </style>
 </head>
 <body>
 
+<div class="urgency-bar">
+    ⏰ LANÇAMENTO OFICIAL - PREÇO PROMOCIONAL POR TEMPO LIMITADO ⏰
+</div>
+
 <header>
-    <h1>⚠️ Pare de Descobrir Problemas na Sua Rede Quando Já é Tarde Demais</h1>
-    <p>Aprenda a configurar o Nagios do zero ao avançado e transforme seu monitoramento em um sistema profissional que previne falhas antes que elas prejudiquem sua empresa.</p>
+    <h1>🚨 VOCÊ ESTÁ PERDENDO CLIENTES E PROMOÇÕES POR CAUSA DE QUEDAS DE REDE?</h1>
+    <p>CLTs, autônomos e MSPs estão usando este guia para implementar monitoramento profissional em menos de 48h e evitar prejuízos com indisponibilidade.</p>
 </header>
 
 <div class="container">
 
+    <!-- IMAGENS E RECURSOS VISUAIS -->
+    <div class="image-showcase">
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231e293b'/%3E%3Ccircle cx='80' cy='100' r='30' fill='%2322c55e'/%3E%3Ccircle cx='200' cy='100' r='30' fill='%233b82f6'/%3E%3Ccircle cx='320' cy='100' r='30' fill='%23f97316'/%3E%3Cpath d='M110 100 L170 100 M230 100 L290 100' stroke='white' stroke-width='4'/%3E%3Ctext x='20' y='170' fill='white' font-size='16'%3E Dashboard Nagios Profissional%3C/text%3E%3C/svg%3E" 
+                 alt="Dashboard Nagios">
+            <div class="caption">📊 Dashboard completo - Monitore tudo em tempo real</div>
+        </div>
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%230f172a'/%3E%3Crect x='50' y='50' width='300' height='30' fill='%23334155'/%3E%3Crect x='50' y='100' width='300' height='30' fill='%23334155'/%3E%3Crect x='50' y='150' width='300' height='30' fill='%23334155'/%3E%3Ccircle cx='330' cy='65' r='12' fill='%2322c55e'/%3E%3Ccircle cx='330' cy='115' r='12' fill='%23f97316'/%3E%3Ccircle cx='330' cy='165' r='12' fill='%23ef4444'/%3E%3Ctext x='70' y='185' fill='white'%3E Alertas Inteligentes - Priorize o crítico%3C/text%3E%3C/svg%3E"
+                 alt="Alertas Nagios">
+            <div class="caption">🔔 Sistema de alertas - Seja avisado antes do cliente</div>
+        </div>
+        <div class="showcase-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231a2e38'/%3E%3Cpath d='M50 150 L100 80 L150 120 L200 60 L250 100 L300 40 L350 70' stroke='%2322c55e' stroke-width='4' fill='none'/%3E%3Crect x='70' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Crect x='170' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Crect x='270' y='160' width='40' height='20' fill='%233b82f6'/%3E%3Ctext x='20' y='40' fill='white' font-size='16'%3E Relatórios Automáticos%3C/text%3E%3C/svg%3E"
+                 alt="Relatórios Nagios">
+            <div class="caption">📈 Relatórios automáticos - Comprove seu trabalho</div>
+        </div>
+    </div>
+
+    <!-- COPY AGRESSIVA - MODO LANÇAMENTO -->
     <div class="highlight">
-        <h2>🔥 HOOK DE CONVERSÃO</h2>
-        <p><strong>Imagine receber o alerta do problema antes do seu cliente perceber.</strong><br>
-        É isso que profissionais de TI valorizados fazem — e você pode aprender agora.</p>
+        <h2>😡 CHEGA DE APAGAR INCÊNDIO TODO DIA!</h2>
+        <p style="font-size: 1.3rem; font-weight: 600; color: #dc2626;">Enquanto você lê isso, seu servidor pode estar fora do ar e você nem sabe.</p>
+        <p style="margin-top: 20px;">O <strong>profissional de TI que monitora proativamente</strong> vale 3x mais no mercado. Ele não espera o usuário reclamar - ele resolve antes.</p>
+        <p style="background: #fef9c3; padding: 15px; border-radius: 10px; margin-top: 20px; color: #854d0e;">
+            💰 CLT que aprendeu Nagios conseguiu aumento de 40% em 3 meses<br>
+            🚀 Autônomo fidelizou 5 clientes novos com relatórios de disponibilidade<br>
+            🛡️ MSP reduziu chamados em 60% na primeira semana
+        </p>
     </div>
 
+    <!-- BOX DE PREÇO COM URGÊNCIA -->
     <div class="price-box">
-        <div class="badge">🛡 Garantia Incondicional de 7 Dias</div>
-        <p class="old-price">De R$ 197,00</p>
-        <p class="new-price">R$ 67,00</p>
-        <p>🎯 Promoção por tempo limitado</p>
-        <p>⚡ Acesso imediato após confirmação</p>
-        <a href="#" class="cta">QUERO ACESSO IMEDIATO</a>
+        <div class="badge">🎁 BÔNUS EXCLUSIVOS: Scripts prontos + Modelo de Relatório + Comunidade VIP</div>
+        <p style="font-size: 1.2rem; color: #cbd5e1;">Esse conhecimento já mudou a carreira de centenas de profissionais...</p>
+        <p class="old-price">De R$ 297,00</p>
+        <p style="font-size: 1rem; color: #f97316;">PREÇO DE LANÇAMENTO (ÚLTIMAS 48H)</p>
+        <p class="new-price">R$ 47,00</p>
+        <p style="font-size: 1rem; margin: 10px 0;">💳 Parcele em até 12x de R$ 4,70</p>
+        <p style="color: #86efac;">🔒 Garantia incondicional de 7 dias - Risco ZERO</p>
+        
+        <!-- SIMULAÇÃO DE CHECKOUT HOTMART / KIWIFY -->
+        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; margin-top: 30px;">
+            <p style="font-weight: 700; margin-bottom: 20px;">✅ CHECKOUT SEGURO - AMBIENTE SIMULADO</p>
+            <div class="payment-methods">
+                <span class="payment-method">💳 Hotmart</span>
+                <span class="payment-method">🟢 Kiwify</span>
+                <span class="payment-method">💙 Stripe</span>
+                <span class="payment-method">📱 Pix (10% OFF)</span>
+            </div>
+            <a href="#" class="cta">🔥 QUERO MONITORAR COMO ESPECIALISTA 🔥</a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">🔐 Pagamento 100% seguro - Acesso imediato</p>
+        </div>
     </div>
 
+    <!-- COPY PARA AUTÔNOMOS E MSPs -->
+    <div style="background: #fff7ed; padding: 40px; border-radius: 20px; margin: 40px 0; border-left: 8px solid #f97316;">
+        <h3 style="font-size: 1.8rem; color: #9a3412; margin-bottom: 20px;">🖥️ PARA AUTÔNOMOS E MSPs:</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Seu diferencial competitivo está na sua capacidade de entregar SLA e relatórios de uptime.</p>
+        <p style="font-weight: bold;">Clientes pagam mais quando você prova que o sistema deles fica no ar. Este guia te ensina a gerar esses relatórios automaticamente.</p>
+    </div>
+
+    <!-- ÁREA EXCLUSIVA PARA AFILIADOS -->
+    <div class="affiliate-box">
+        <h3 style="font-size: 2rem; margin-bottom: 20px;">🤝 É AFILIADO? GANHE 50% POR VENDA</h3>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">Promova o melhor guia de Nagios do Brasil e lucre alto com nossa conversão agressiva.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Material pronto para divulgação</span>
+            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Links de afiliado exclusivos</span>
+            <span style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px;">✅ Comissões pagas em D+7</span>
+        </div>
+        <a href="#" class="affiliate-cta">🚀 QUERO SER AFILIADO - 50% DE COMISSÃO</a>
+        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Mais de 150 afiliados já estão lucrando com este produto</p>
+    </div>
+
+    <!-- DEPOIMENTOS VERÍDICOS (SIMULADOS) -->
     <div class="testimonials">
-        <h2>💬 O Que Estão Dizendo</h2>
-
-        <div class="testimonial">
-            <strong>Marcos R. – Analista de Infraestrutura</strong>
-            <p>"Finalmente entendi como configurar alertas corretamente. Em 2 dias já estava monitorando servidores e links como profissional."</p>
+        <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 40px;">🚀 RESULTADOS REAIS DE ALUNOS</h2>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p style="font-style: italic; margin-bottom: 15px;">"Trabalho como CLT em uma indústria. Sempre tive medo de ser cobrado por quedas que eu não via. Depois do guia, implementei monitoramento em 1 dia. Meu chefe me chamou pra liderar a equipe de infra."</p>
+                <strong>— André L., Analista de Infra Sênior</strong>
+                <p style="color: #22c55e; margin-top: 10px;">⭐ Aumento salarial de 35%</p>
+            </div>
+            
+            <div class="testimonial">
+                <p style="font-style: italic; margin-bottom: 15px;">"Sou autônomo e cuidava de 10 clientes no achismo. Hoje tenho um painel centralizado e envio relatórios semanais. Consegui aumentar meus contratos em 50% esse ano."</p>
+                <strong>— Patrícia M., Prestadora de Serviços TI</strong>
+                <p style="color: #22c55e; margin-top: 10px;">💰 +5 clientes em 2 meses</p>
+            </div>
+            
+            <div class="testimonial">
+                <p style="font-style: italic; margin-bottom: 15px;">"Trabalho em um MSP que gerencia 50 empresas. Não tínhamos padronização. Esse treinamento virou política interna da empresa. Economizamos horas de troubleshooting."</p>
+                <strong>— Rafael S., Coordenador de NOC</strong>
+                <p style="color: #22c55e; margin-top: 10px;">⏱️ Redução de 70% no MTTR</p>
+            </div>
         </div>
+    </div>
 
-        <div class="testimonial">
-            <strong>Juliana P. – Suporte N2</strong>
-            <p>"Material direto ao ponto. Economizei semanas de tentativa e erro. Vale muito mais que o valor cobrado."</p>
-        </div>
-
-        <div class="testimonial">
-            <strong>Carlos M. – Técnico de TI</strong>
-            <p>"Depois desse guia consegui implementar monitoramento real na empresa e mostrar resultado para diretoria."</p>
-        </div>
-
+    <!-- GARANTIA E ÚLTIMO CALL TO ACTION -->
+    <div style="text-align: center; padding: 50px; background: #f8fafc; border-radius: 30px; margin-top: 50px;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2322c55e' opacity='0.2'/%3E%3Cpath d='M30 50 L45 65 L70 35' stroke='%2322c55e' stroke-width='8' fill='none'/%3E%3C/svg%3E" style="margin-bottom: 20px;">
+        <h3 style="font-size: 2rem; margin-bottom: 20px;">GARANTIA INCONDICIONAL DE 7 DIAS</h3>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+        <a href="#" class="cta">✅ SIM, QUERO ME TORNAR UM ESPECIALISTA EM MONITORAMENTO</a>
+        <p style="margin-top: 20px; color: #64748b;">⚠️ Preço de lançamento disponível por tempo limitado</p>
     </div>
 
 </div>
 
-<footer>
-    © 2026 Guia Profissional de Nagios | Todos os direitos reservados
-</footer>
+<div class="footer">
+    <p>© 2026 Guia Profissional de Nagios - Todos os direitos reservados</p>
+    <p style="margin-top: 20px; opacity: 0.7; font-size: 0.9rem;">Este é um ambiente de demonstração com integrações simuladas para fins de portfólio.</p>
+    <div style="margin-top: 20px; display: flex; justify-content: center; gap: 30px; font-size: 0.9rem;">
+        <a href="#" style="color: white; text-decoration: none;">Termos de Uso</a>
+        <a href="#" style="color: white; text-decoration: none;">Política de Privacidade</a>
+        <a href="#" style="color: white; text-decoration: none;">Suporte</a>
+    </div>
+</div>
 
 </body>
 </html>
