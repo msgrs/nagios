@@ -300,24 +300,39 @@
 </head>
 <body>
 
-<!-- ⚡ ESCASSEZ REAL - CRONÔMETRO E ESTOQUE -->
+<!-- ⚡ ESCASSEZ REAL - CRONÔMETRO QUE FUNCIONA -->
 <div class="flash-sale">
     ⏳ PREÇO DE LANÇAMENTO ACABA EM: <span id="countdown">47:59:59</span>
     <span style="margin-left: 15px;">📦 32 unidades restantes</span>
 </div>
 <script>
-    // Contador regressivo - 48 horas a partir de agora
-    let time = 48 * 60 * 60;
-    setInterval(() => { 
-        if(time > 0) time--; 
-        let h = Math.floor(time / 3600);
-        let m = Math.floor((time % 3600) / 60);
-        let s = time % 60;
+    // CRONÔMETRO REAL - 48 HORAS A PARTIR DE AGORA
+    let hours = 47;
+    let minutes = 59;
+    let seconds = 59;
+    
+    function updateCountdown() {
+        if(seconds > 0) {
+            seconds--;
+        } else {
+            if(minutes > 0) {
+                minutes--;
+                seconds = 59;
+            } else {
+                if(hours > 0) {
+                    hours--;
+                    minutes = 59;
+                    seconds = 59;
+                }
+            }
+        }
+        
         document.getElementById('countdown').innerText = 
-            `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    }, 1000);
+            `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }
+    
+    setInterval(updateCountdown, 1000);
 </script>
-
 <div class="container">
 
     <!-- 🎯 HERO - DOR + CAPAS REAIS -->
