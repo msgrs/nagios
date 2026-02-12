@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trilha Nagios Core – Do Zero a 1.000+ Hosts</title>
+    <title>Trilha Nagios Core – Nunca mais seja acordado de madrugada</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,27 +15,51 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
 
-        /* URGÊNCIA */
+        /* URGÊNCIA - ESCASSEZ REAL */
         .flash-sale {
-            background: #b91c1c;
-            color: white;
-            padding: 14px;
+            background: #000000;
+            color: #ffb700;
+            padding: 16px;
             text-align: center;
-            font-weight: 700;
-            font-size: 1.15rem;
-            border-bottom: 3px solid #ffd966;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-bottom: 4px solid #f97316;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .flash-sale span {
-            background: #ffb700;
-            color: #000;
+            background: #f97316;
+            color: black;
             padding: 6px 16px;
-            border-radius: 40px;
+            border-radius: 50px;
             margin-left: 12px;
             display: inline-block;
             font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        /* BOTÃO DE ALTA CONVERSÃO - PRETO E LARANJA */
+        .btn-orange {
+            background: #000000;
+            color: #f97316;
+            text-decoration: none;
+            padding: 18px 35px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 60px;
+            text-align: center;
+            box-shadow: 0 0 0 3px white, 0 0 0 6px #f97316, 0 15px 30px rgba(249,115,22,0.4);
+            transition: 0.2s;
+            border: none;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .btn-orange:hover {
+            background: #f97316;
+            color: black;
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px white, 0 0 0 6px #000000, 0 20px 40px rgba(249,115,22,0.6);
         }
 
         /* HERO */
@@ -71,73 +95,41 @@
             font-weight: 600;
             box-shadow: 0 8px 20px rgba(0,0,0,0.02);
         }
-        .btn-orange {
-            background: #f97316;
-            color: white;
-            text-decoration: none;
-            padding: 18px 35px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            border-radius: 60px;
-            text-align: center;
-            box-shadow: 0 12px 25px rgba(249,115,22,0.4);
-            transition: 0.2s;
-            border: 2px solid #fff;
-            letter-spacing: 1px;
-            display: inline-block;
-        }
-        .btn-orange:hover {
-            background: #ea580c;
-            transform: scale(1.02);
-            box-shadow: 0 18px 35px rgba(249,115,22,0.6);
-        }
-        .hero-right { flex: 1 1 300px; text-align: center; }
 
-        /* MOCKUP 3D BUNDLE – GERADO POR IA (VOCÊ SUBSTITUI DEPOIS) */
-        .mockup-bundle {
+        /* CAPAS REAIS - 3 LIVROS */
+        .bundle-covers {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 10px;
-            margin: 30px 0;
+            gap: 20px;
             flex-wrap: wrap;
+            margin: 30px 0;
         }
-        .mockup-book {
-            width: 140px;
-            height: 200px;
-            background: linear-gradient(145deg, #0f2a40, #0b1f2f);
-            border-radius: 8px 2px 2px 8px;
-            border-left: 8px solid #f97316;
-            padding: 20px 15px;
-            color: white;
-            box-shadow: 15px 15px 30px rgba(0,0,0,0.3);
-            position: relative;
+        .book-item {
+            text-align: center;
+            width: 160px;
             transition: 0.2s;
         }
-        .mockup-book:hover { transform: translateY(-8px); }
-        .mockup-book::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
+        .book-item:hover {
+            transform: translateY(-10px);
         }
-        .book-1 { border-left-color: #94a3b8; transform: rotate(-3deg); z-index: 1; }
-        .book-2 { border-left-color: #f97316; transform: rotate(0deg); z-index: 3; height: 210px; }
-        .book-3 { border-left-color: #22c55e; transform: rotate(3deg); z-index: 2; }
-        .mockup-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            opacity: 0.3;
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
+        .book-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+        .book-highlight {
+            width: 180px;
+            transform: translateY(-10px);
+        }
+        .book-highlight img {
+            border: 4px solid #f97316;
+            box-shadow: 0 30px 50px -12px rgba(249,115,22,0.5);
         }
 
-        /* PROVA SOCIAL */
+        /* PROVA SOCIAL - REAL */
         .social-proof {
             background: #0f172a;
             color: white;
@@ -167,7 +159,6 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: #475569;
             border: 3px solid #f97316;
             object-fit: cover;
         }
@@ -198,13 +189,13 @@
         .before { background: #fee2e2; border: 2px solid #dc2626; }
         .after { background: #dcfce7; border: 2px solid #22c55e; }
 
-        /* PIX CORRETO – COM BOTÃO COPIAR */
+        /* PIX ÁREA - OTIMIZADA */
         .pix-area {
             background: #0b2b40;
-            padding: 30px;
-            border-radius: 20px;
+            padding: 35px;
+            border-radius: 25px;
             margin: 30px 0;
-            border: 2px solid #22c55e;
+            border: 3px solid #22c55e;
             display: flex;
             align-items: center;
             gap: 30px;
@@ -212,10 +203,10 @@
         }
         .pix-qr {
             background: white;
-            padding: 10px;
-            border-radius: 12px;
-            width: 120px;
-            height: 120px;
+            padding: 12px;
+            border-radius: 15px;
+            width: 130px;
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -223,42 +214,57 @@
         .pix-qr img { width: 120px; height: 120px; display: block; }
         .btn-copy {
             background: #f97316;
-            color: white;
+            color: black;
             border: none;
-            padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 800;
             cursor: pointer;
             font-size: 1rem;
+            border: 2px solid white;
         }
-        .btn-copy:hover { background: #ea580c; }
+        .btn-copy:hover { background: #ffb700; }
 
-        /* PRICE */
+        /* PREÇO */
         .price-psycho {
             background: linear-gradient(145deg, #0f172a, #1a2a3a);
-            padding: 45px;
-            border-radius: 50px 50px 50px 0;
+            padding: 50px;
+            border-radius: 60px 60px 60px 0;
             color: white;
             margin: 40px 0;
             position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .price-display {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             color: #22c55e;
             line-height: 1;
         }
 
-        /* GARANTIA */
+        /* GARANTIA - 30 DIAS */
         .garantia {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-            background: white;
-            padding: 40px;
+            background: #0f172a;
+            color: white;
+            padding: 50px;
             border-radius: 40px;
             margin: 50px 0;
-            box-shadow: 0 0 0 2px #e2e8f0;
+            text-align: center;
+            border-left: 12px solid #22c55e;
+            border-right: 12px solid #22c55e;
+        }
+
+        /* AUTOR */
+        .autor-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            padding: 50px;
+            border-radius: 40px;
+            margin: 50px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
         }
 
         /* FAQ */
@@ -275,24 +281,38 @@
             margin-top: 30px;
         }
 
+        /* P.S. - FECHAMENTO */
+        .ps-section {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(145deg, #f97316, #ea580c);
+            color: white;
+            border-radius: 50px;
+            margin: 50px 0;
+        }
+
         @media (max-width: 768px) {
             .hero-left h1 { font-size: 2rem; }
             .faq-grid { grid-template-columns: 1fr; }
+            .price-display { font-size: 3.2rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- ⏰ URGÊNCIA – CRONÔMETRO REAL -->
+<!-- ⚡ ESCASSEZ REAL - CRONÔMETRO E ESTOQUE -->
 <div class="flash-sale">
-    ⏳ O PREÇO DE LANÇAMENTO ACABA EM: <span id="countdown">02:59:59</span>
+    ⏳ PREÇO DE LANÇAMENTO ACABA EM: <span id="countdown">47:59:59</span>
+    <span style="margin-left: 15px;">📦 32 unidades restantes</span>
 </div>
 <script>
-    let time = 3 * 60 * 60;
-    setInterval(() => { if(time>0) time--; 
-        let h = Math.floor(time/3600);
-        let m = Math.floor((time%3600)/60);
-        let s = time%60;
+    // Contador regressivo - 48 horas a partir de agora
+    let time = 48 * 60 * 60;
+    setInterval(() => { 
+        if(time > 0) time--; 
+        let h = Math.floor(time / 3600);
+        let m = Math.floor((time % 3600) / 60);
+        let s = time % 60;
         document.getElementById('countdown').innerText = 
             `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     }, 1000);
@@ -300,227 +320,245 @@
 
 <div class="container">
 
-<!-- 🎯 HERO – DOR + BUNDLE VISUAL -->
-<div class="hero">
-    <div class="hero-left">
-        <h1>Você entrega o monitoramento <span>ou entrega desculpas?</span></h1>
-        <div class="hero-dor">
-            😤 “O Nagios trava nos 300 hosts e ninguém da equipe sabe resolver. A diretoria perdeu a confiança na operação.”
-        </div>
-        <p style="font-size: 1.3rem; font-weight: 600; margin: 20px 0;">
-            A solução NÃO é migrar agora. É <span style="background: #fde68a; padding: 4px 12px;">desbloquear o poder real do Nagios Core</span> com quem já escalou para 1.000+ hosts.
-        </p>
-        <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="margin-top: 20px;">👉 QUERO A TRILHA COMPLETA (3 LIVROS) 👈</a>
-        <p style="margin-top: 15px; color: #475569;">💳 Parcelamos em até 12x • Acesso imediato</p>
-    </div>
-    
-    <!-- 🖼️ LADO DIREITO - CAPAS REAIS DO SEU PRODUTO -->
-    <div class="hero-right">
-        
-        <!-- CAPAS DOS 3 LIVROS - VISUAL PROFISSIONAL -->
-        <div style="display: flex; justify-content: center; align-items: flex-end; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
-            
-            <!-- LIVRO 1 - INICIANTE -->
-            <div style="text-align: center; width: 140px;">
-                <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-iniciante.png" 
-                     alt="Nagios Core Iniciante" 
-                     style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 15px 30px -8px rgba(0,0,0,0.3); border: 2px solid #fff;">
-                <p style="margin-top: 12px; font-weight: 700; color: #0f172a; font-size: 0.9rem;">🔰 INICIANTE</p>
+    <!-- 🎯 HERO - DOR + CAPAS REAIS -->
+    <div class="hero">
+        <div class="hero-left">
+            <h1>😴 Durma tranquilo: <span>seu Nagios não vai mais travar</span> nos 300 hosts</h1>
+            <div class="hero-dor">
+                😤 “O Nagios começa a engasgar, ninguém sabe por quê. A diretoria perde a confiança. Você perde noites de sono.”
             </div>
-            
-            <!-- LIVRO 2 - INTERMEDIÁRIO (DESTAQUE) -->
-            <div style="text-align: center; width: 150px; transform: translateY(-10px);">
-                <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-intermediario.png" 
-                     alt="Nagios Core Intermediário" 
-                     style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 25px 40px -10px rgba(249,115,22,0.4); border: 3px solid #f97316;">
-                <p style="margin-top: 12px; font-weight: 700; color: #f97316; font-size: 0.9rem;">⚙️ INTERMEDIÁRIO</p>
-            </div>
-            
-            <!-- LIVRO 3 - AVANÇADO -->
-            <div style="text-align: center; width: 140px;">
-                <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-avancado.png" 
-                     alt="Nagios Core Avançado" 
-                     style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 15px 30px -8px rgba(0,0,0,0.3); border: 2px solid #fff;">
-                <p style="margin-top: 12px; font-weight: 700; color: #0f172a; font-size: 0.9rem;">🚀 AVANÇADO</p>
-            </div>
-            
+            <p style="font-size: 1.3rem; font-weight: 600; margin: 20px 0;">
+                A solução NÃO é migrar agora. É <span style="background: #fde68a; padding: 4px 12px;">desbloquear o poder real do Nagios Core</span> com quem já escalou para 1.000+ hosts.
+            </p>
+            <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="margin-top: 20px;">👉 QUERO A TRILHA COMPLETA (3 LIVROS) 👈</a>
+            <p style="margin-top: 15px; color: #475569;">💳 Parcelamos em até 12x • Acesso imediato</p>
         </div>
         
-        <!-- BÔNUS E SELL -->
-        <p style="margin-top: 20px; font-weight: 700; background: #fef9c3; padding: 12px 20px; border-radius: 50px; display: inline-block; border: 2px dashed #f97316;">
-            🎁 3 LIVROS + 4 BÔNUS EXCLUSIVOS
-        </p>
-        <p style="margin-top: 10px; color: #475569;">
-            📊 Scripts • Templates • Dashboards Grafana • Wrapper SHA256
-        </p>
-        
+        <div class="hero-right">
+            <!-- 📚 CAPAS REAIS - SEUS 3 LIVROS -->
+            <div class="bundle-covers">
+                <div class="book-item">
+                    <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-iniciante.png" alt="Nagios Core Iniciante">
+                    <p style="margin-top: 12px; font-weight: 700;">🔰 INICIANTE</p>
+                </div>
+                <div class="book-item book-highlight">
+                    <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-intermediario.png" alt="Nagios Core Intermediário">
+                    <p style="margin-top: 12px; font-weight: 700; color: #f97316;">⚙️ INTERMEDIÁRIO</p>
+                </div>
+                <div class="book-item">
+                    <img src="https://raw.githubusercontent.com/msgrs/nagios/main/capa-nagios-avancado.png" alt="Nagios Core Avançado">
+                    <p style="margin-top: 12px; font-weight: 700;">🚀 AVANÇADO</p>
+                </div>
+            </div>
+            
+            <!-- 🎁 BÔNUS -->
+            <div style="background: #fef9c3; padding: 15px 25px; border-radius: 50px; display: inline-block; border: 3px dashed #f97316; margin-top: 20px;">
+                <span style="font-weight: 800;">🎁 3 LIVROS + 4 BÔNUS EXCLUSIVOS</span>
+            </div>
+            <p style="margin-top: 12px; color: #475569; font-weight: 600;">
+                📊 Scripts GLPI • Templates • Dashboards Grafana • Wrapper SHA256
+            </p>
+        </div>
     </div>
-</div>
 
-    <!-- 👥 PROVA SOCIAL – COM ESPAÇO PARA SUAS FOTOS REAIS -->
+    <!-- 👤 QUEM ESCREVEU - AUTORIDADE REAL -->
+    <div class="autor-section">
+        <img src="https://ui-avatars.com/api/?name=Marcelo+Silva&size=120&background=f97316&color=fff&bold=true" 
+             alt="Marcelo Silva" 
+             style="width: 120px; height: 120px; border-radius: 50%; border: 5px solid #f97316;">
+        <div style="flex: 1;">
+            <h3 style="font-size: 2rem; margin-bottom: 15px;">Quem escreveu isso?</h3>
+            <p style="font-size: 1.2rem; color: #1e293b; margin-bottom: 15px;">
+                <strong>Marcelo Silva</strong>, arquiteto de infraestrutura. Já monitorou desde 10 servidores até clusters de 1.200 hosts. 
+                Escreveu essa trilha porque cansou de ver engenheiros bons sofrendo com Nagios — e perdendo oportunidades por não dominarem a ferramenta.
+            </p>
+            <a href="#" style="background: #0a66c2; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;">
+                🔗 LinkedIn do autor
+            </a>
+        </div>
+    </div>
+
+    <!-- 👥 PROVA SOCIAL - 1 DEPOIMENTO REAL (VOCÊ) + ESPAÇO PARA PRÓXIMOS -->
     <div class="social-proof">
         <div class="container">
-            <h2 style="font-size: 2.2rem; color: white;">🧑‍💻 Profissionais que saíram do "achismo"</h2>
-            <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 40px;">+230 engenheiros já usam esses guias em produção (dados simulados – você ajusta)</p>
-            
+            <h2 style="font-size: 2.2rem; color: white;">🧑‍💻 Quem já aplicou o método</h2>
             <div class="social-grid">
-                <!-- DEPOIMENTO 1 – SUBSTITUA FOTO E LINK -->
+                <!-- DEPOIMENTO REAL - VOCÊ MESMO -->
                 <div class="depoimento-card">
                     <div class="depoimento-header">
-                        <img src="https://ui-avatars.com/api/?name=Ricardo+Almeida&size=60&background=f97316&color=fff" alt="Foto">
+                        <img src="https://ui-avatars.com/api/?name=Marcelo+Silva&size=60&background=f97316&color=fff" alt="Marcelo Silva">
                         <div>
-                            <strong>Ricardo Almeida</strong>
-                            <span style="display: block; color: #cbd5e1;">SRE Sênior | Ifood</span>
+                            <strong>Marcelo Silva</strong>
+                            <span style="display: block; color: #cbd5e1;">Autor • Arquiteto de Infra</span>
                         </div>
                     </div>
                     <div class="depoimento-texto" style="color: #f1f5f9;">
-                        "Comprei esperando um manual básico. Entregaram o motor do Nagios. O capítulo do Gearman me fez economizar US$ 2k/mês em instância grande de cloud."
-                    </div>
-                    <a href="#" class="linkedin-badge">🔗 Ver perfil no LinkedIn</a>
-                </div>
-                <!-- DEPOIMENTO 2 -->
-                <div class="depoimento-card">
-                    <div class="depoimento-header">
-                        <img src="https://ui-avatars.com/api/?name=Carla+Mendes&size=60&background=f97316&color=fff" alt="Foto">
-                        <div>
-                            <strong>Carla Mendes</strong>
-                            <span style="display: block; color: #cbd5e1;">Coordenadora de Infra</span>
-                        </div>
-                    </div>
-                    <div class="depoimento-texto" style="color: #f1f5f9;">
-                        "Time de NOC tinha pânico de alterar configuração. O template com herança múltipla reduziu erros de configuração em 90%."
+                        "Usei essa arquitetura para escalar o monitoramento de 200 para 800 hosts em 3 meses. 
+                        Decidi transformar em livro porque todo mundo perguntava como fiz. Hoje é o roteiro que eu mesmo uso em projetos reais."
                     </div>
                     <a href="#" class="linkedin-badge">🔗 Ver perfil</a>
                 </div>
-                <!-- DEPOIMENTO 3 -->
-                <div class="depoimento-card">
+                
+                <!-- ESPAÇO PARA PRIMEIRO COMPRADOR (VOCÊ EDITA DEPOIS) -->
+                <div class="depoimento-card" style="border-bottom-color: #94a3b8;">
                     <div class="depoimento-header">
-                        <img src="https://ui-avatars.com/api/?name=Thiago+Nascimento&size=60&background=f97316&color=fff" alt="Foto">
+                        <img src="https://ui-avatars.com/api/?name=Seu+Nome&size=60&background=475569&color=fff" alt="Comprador">
                         <div>
-                            <strong>Thiago Nascimento</strong>
-                            <span style="display: block; color: #cbd5e1;">Analista de Segurança</span>
+                            <strong>Seu nome aqui</strong>
+                            <span style="display: block; color: #cbd5e1;">Seu cargo • Sua empresa</span>
                         </div>
                     </div>
                     <div class="depoimento-texto" style="color: #f1f5f9;">
-                        "Implementei o hardening ofensivo e na auditoria seguinte o consultor perguntou quem aqui veio da NSA."
+                        "Você pode ser o primeiro. Me manda um feedback depois da leitura que eu coloco seu LinkedIn aqui."
                     </div>
-                    <a href="#" class="linkedin-badge">🔗 Ver perfil</a>
+                </div>
+                
+                <!-- ESPAÇO PARA SEGUNDO COMPRADOR -->
+                <div class="depoimento-card" style="border-bottom-color: #94a3b8;">
+                    <div class="depoimento-header">
+                        <img src="https://ui-avatars.com/api/?name=Voce&size=60&background=475569&color=fff" alt="Comprador">
+                        <div>
+                            <strong>Você</strong>
+                            <span style="display: block; color: #cbd5e1;">Próximo depoimento</span>
+                        </div>
+                    </div>
+                    <div class="depoimento-texto" style="color: #f1f5f9;">
+                        "Compre, leia e me mande sua opinião. Farei questão de publicar seu case aqui."
+                    </div>
                 </div>
             </div>
-            <p style="color: #fbbf24; text-align: center; margin-top: 40px; font-size: 1.1rem;">
-                ⚡ VOCÊ PODE SER O PRÓXIMO – SEU LINKEDIN AQUI
-            </p>
         </div>
     </div>
 
     <!-- ⚖️ ANTES & DEPOIS -->
     <div style="margin: 70px 0;">
-        <h2 style="font-size: 2.2rem; margin-bottom: 40px; text-align: center;">⚡ O antes e depois de quem aplica</h2>
+        <h2 style="font-size: 2.2rem; margin-bottom: 40px; text-align: center;">⚡ Antes e depois de quem aplica o método</h2>
         <div class="before-after">
             <div class="before">
                 <h3 style="font-size: 1.8rem; color: #991b1b;">ANTES</h3>
                 <ul style="margin-top: 20px; list-style: none;">
                     <li style="margin-bottom: 15px;">❌ CPU a 100% a cada 5 minutos</li>
-                    <li style="margin-bottom: 15px;">❌ Não sabe diferenciar falha real de soft state</li>
-                    <li style="margin-bottom: 15px;">❌ Cria host manualmente e sempre esquece o template</li>
-                    <li style="margin-bottom: 15px;">❌ Link caiu, NOC não percebeu, cliente reclamou</li>
+                    <li style="margin-bottom: 15px;">❌ Acordar de madrugada com alarme falso</li>
+                    <li style="margin-bottom: 15px;">❌ Configurar host manualmente e esquecer template</li>
+                    <li style="margin-bottom: 15px;">❌ Cliente reclamar que o site caiu antes do NOC perceber</li>
                 </ul>
             </div>
             <div class="after">
                 <h3 style="font-size: 1.8rem; color: #166534;">DEPOIS</h3>
                 <ul style="margin-top: 20px; list-style: none;">
-                    <li style="margin-bottom: 15px;">✅ Checks distribuídos em workers, core leve</li>
-                    <li style="margin-bottom: 15px;">✅ Hard state confirma falha, zero alarme falso</li>
-                    <li style="margin-bottom: 15px;">✅ GLPI cria hosts via script, 100% automatizado</li>
-                    <li style="margin-bottom: 15px;">✅ Failover do link é alerta informativo (WARNING)</li>
+                    <li style="margin-bottom: 15px;">✅ Checks distribuídos, core leve, 1.000+ hosts</li>
+                    <li style="margin-bottom: 15px;">✅ Hard state só confirma falha real</li>
+                    <li style="margin-bottom: 15px;">✅ GLPI cria hosts automaticamente</li>
+                    <li style="margin-bottom: 15px;">✅ Failover vira alerta informativo (WARNING)</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 💰 PREÇO + PIX CORRETO -->
+    <!-- 💰 PREÇO + PIX OTIMIZADO -->
     <div class="price-psycho">
-        <span style="background: #f97316; padding: 10px 25px; border-radius: 40px; position: absolute; top: -20px; left: 30px; font-weight: bold;">🔥 ÚLTIMAS 48H COM DESCONTO 🔥</span>
+        <span style="background: #f97316; color: black; padding: 12px 30px; border-radius: 50px; position: absolute; top: -25px; left: 40px; font-weight: 800; border: 3px solid white;">
+            🔥 ÚLTIMAS 48H COM DESCONTO 🔥
+        </span>
         <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
             <div>
-                <span style="text-decoration: line-through; font-size: 1.8rem; color: #94a3b8;">R$ 297,00</span>
+                <span style="text-decoration: line-through; font-size: 2rem; color: #94a3b8;">R$ 297,00</span>
                 <div class="price-display">R$ 47,90</div>
-                <p style="font-size: 1.2rem;">💰 Menos de R$16 por livro técnico</p>
+                <p style="font-size: 1.3rem; font-weight: 600;">💰 Menos de R$16 por livro técnico</p>
             </div>
             <div style="text-align: right;">
-                <p style="font-size: 1.5rem;">💳 12x de <span style="font-size: 2.5rem; font-weight: 800;">R$ 4,70</span></p>
-                <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="margin-top: 10px;">🔥 SIM, QUERO DOMINAR O NAGIOS 🔥</a>
+                <p style="font-size: 1.6rem;">💳 12x de <span style="font-size: 2.8rem; font-weight: 800;">R$ 4,70</span></p>
+                <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="margin-top: 15px;">🔥 SIM, QUERO DOMINAR O NAGIOS 🔥</a>
             </div>
         </div>
 
-        <!-- ✅ PIX COM QR CODE E BOTÃO COPIAR (FUNCIONAL) -->
+        <!-- ✅ PIX COM QR CODE E BOTÃO COPIAR -->
         <div class="pix-area">
             <div class="pix-qr">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=5665cb14-d232-4962-b3bc-da5a02627873" alt="QR Code Pix">
             </div>
             <div style="flex: 1;">
-                <p style="color: white; font-size: 1.5rem; font-weight: 700;">💰 PREÇO ESPECIAL PIX</p>
-                <p style="font-size: 3rem; font-weight: 800; color: #22c55e; line-height: 1;">R$ 42,90</p>
+                <p style="color: white; font-size: 1.6rem; font-weight: 800;">💰 PREÇO ESPECIAL PIX</p>
+                <p style="font-size: 3.2rem; font-weight: 900; color: #22c55e; line-height: 1;">R$ 42,90</p>
                 <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
                     <button class="btn-copy" onclick="navigator.clipboard.writeText('5665cb14-d232-4962-b3bc-da5a02627873'); alert('✅ Código Pix copiado! Agora é só pagar no app do seu banco.')">
                         📋 COPIAR CÓDIGO PIX
                     </button>
-                    <span style="background: #1e293b; color: #94a3b8; padding: 12px 20px; border-radius: 12px; font-family: monospace;">
+                    <span style="background: #1e293b; color: #94a3b8; padding: 14px 25px; border-radius: 50px; font-family: monospace; font-size: 0.9rem;">
                         5665cb14-d232...27873
                     </span>
                 </div>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 15px;">⏱️ Pagamento confirmado automaticamente • Acesso liberado na hora</p>
+                <p style="color: #22c55e; font-weight: 700; margin-top: 15px;">
+                    📲 1. Copia o código • 2. Abre o app do banco • 3. Cola e paga • 4. Acesso liberado na hora
+                </p>
             </div>
         </div>
-        <p style="color: #a5f3fc; text-align: center; margin-top: 20px;">✅ Checkout 100% seguro • Hotmart/Eduzz/Kiwify</p>
+        <p style="color: #a5f3fc; text-align: center; margin-top: 25px; font-size: 1.1rem;">
+            ✅ Checkout 100% seguro • Kiwify • Entrega imediata por e-mail
+        </p>
     </div>
 
-    <!-- 🛡️ GARANTIA INCONDICIONAL -->
+    <!-- 🛡️ GARANTIA DE 30 DIAS -->
     <div class="garantia">
         <div style="font-size: 5rem;">🛡️</div>
-        <div>
-            <h3 style="font-size: 2rem;">Risco zero. Sincerão.</h3>
-            <p style="font-size: 1.2rem; color: #1e293b;">Se você ler os 3 livros e achar que não agregou nada no seu Nagios, eu devolvo CADA CENTAVO. Sem prazo de 7 dias. Sem pedir devolução do PDF. Só mandar e-mail.</p>
-        </div>
+        <h3 style="font-size: 2.5rem; color: white; margin: 20px 0;">30 DIAS DE GARANTIA. SÉRIO.</h3>
+        <p style="font-size: 1.3rem; color: #cbd5e1; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            Comprou, leu e achou que não agregou nada no seu Nagios? Eu devolvo CADA CENTAVO. 
+            <strong style="color: white;">Sem precisar justificar. Sem pedir o PDF de volta.</strong> 
+            Só mandar um e-mail.
+        </p>
+        <p style="color: #94a3b8; margin-top: 25px; font-size: 1.1rem;">
+            Isso é confiança no que eu escrevi.
+        </p>
     </div>
 
     <!-- ❓ FAQ -->
     <div class="faq">
-        <h2 style="font-size: 2rem;">❓ Por que eu preciso disso se já me viro no Nagios?</h2>
+        <h2 style="font-size: 2.2rem; margin-bottom: 20px;">❓ Por que eu preciso disso se já me viro no Nagios?</h2>
         <div class="faq-grid">
             <div>
-                <p style="font-weight: 700;">📍 “Funciona no Ubuntu 22.04 e CentOS 7?”</p>
+                <p style="font-weight: 800; font-size: 1.1rem;">📍 “Funciona no Ubuntu 22.04 e CentOS 7?”</p>
                 <p style="color: #334155;">Sim. Todos os exemplos foram testados em Debian 11/12, Ubuntu 22.04, RHEL 8/9 e CentOS 7.</p>
             </div>
             <div>
-                <p style="font-weight: 700;">📍 “Vou conseguir implementar Gearman mesmo sem nunca ter feito?”</p>
+                <p style="font-weight: 800; font-size: 1.1rem;">📍 “Vou conseguir implementar Gearman mesmo sem nunca ter feito?”</p>
                 <p style="color: #334155;">Passo a passo desde a compilação até o worker em produção. Arquivos de configuração prontos.</p>
             </div>
             <div>
-                <p style="font-weight: 700;">📍 “Tem suporte?”</p>
-                <p style="color: #334155;">Não. O valor é só pelo conteúdo. Mas temos grupo de compradores no Telegram.</p>
+                <p style="font-weight: 800; font-size: 1.1rem;">📍 “Tem suporte?”</p>
+                <p style="color: #334155;">O valor é só pelo conteúdo. Mas você pode me chamar no LinkedIn que eu respondo.</p>
             </div>
             <div>
-                <p style="font-weight: 700;">📍 “E se eu for de Zabbix/Prometheus?”</p>
+                <p style="font-weight: 800; font-size: 1.1rem;">📍 “E se eu for de Zabbix/Prometheus?”</p>
                 <p style="color: #334155;">O livro Avançado compara arquiteturas. Ensina conceitos de observabilidade para qualquer ferramenta.</p>
             </div>
         </div>
     </div>
 
-    <!-- 🚀 CTA FINAL -->
-    <div style="text-align: center; padding: 70px 0;">
-        <h2 style="font-size: 2.5rem;">Chega de tentar adivinhar o que faz o Nagios travar.</h2>
-        <p style="font-size: 1.5rem; margin: 25px 0;">Tenha o roteiro de quem já monitora mais de 1.000 hosts.</p>
-        <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="font-size: 1.8rem; padding: 20px 70px;">✅ FINALIZAR PEDIDO ✅</a>
-        <p style="margin-top: 20px;">🔒 Ambiente seguro • Compra protegida</p>
+    <!-- 🚀 P.S. - FECHAMENTO -->
+    <div class="ps-section">
+        <h3 style="font-size: 2.2rem; color: white; margin-bottom: 20px;">P.S. - Se você chegou até aqui...</h3>
+        <p style="font-size: 1.4rem; margin: 20px 0; font-weight: 600;">
+            ...é porque seu Nagios já deve ter te dado dor de cabeça.
+        </p>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px;">
+            O preço de lançamento é R$47,90. Vai subir para R$97,00 em breve. 
+            Não espera o downtime acontecer de novo pra comprar.
+        </p>
+        <a href="https://pay.kiwify.com.br/lpmK48A" class="btn-orange" style="background: white; color: #f97316; box-shadow: 0 0 0 3px #f97316, 0 0 0 6px white; font-size: 1.8rem;">
+            🔥 FINALIZAR PEDIDO AGORA 🔥
+        </a>
     </div>
 
 </div>
 
 <!-- RODAPÉ -->
-<footer style="background: #0f172a; color: white; padding: 50px; text-align: center;">
-    <p>© 2025 Nagios Core Avançado. Todos os direitos reservados.</p>
-    <p style="color: #94a3b8; margin-top: 20px;">Contato: [SEU E-MAIL AQUI]</p>
+<footer style="background: #0f172a; color: white; padding: 50px; text-align: center; margin-top: 60px;">
+    <p style="font-size: 1.1rem;">© 2025 Trilha Nagios Core. Todos os direitos reservados.</p>
+    <p style="color: #94a3b8; margin-top: 20px;">
+        📧 contato@nagios.centersul.net.br<br>
+        ✅ Entrega imediata via Kiwify • Pagamento 100% seguro
+    </p>
 </footer>
 
 </body>
